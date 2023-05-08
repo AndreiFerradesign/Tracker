@@ -38,6 +38,7 @@ final class AddTrackerViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapAddIrregularEventButton), for: .touchUpInside)
         return button
     }()
+    
     private let buttonsStack: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -52,7 +53,7 @@ final class AddTrackerViewController: UIViewController {
     
     private var labelText = ""
     private var category: String?
-    //   private var schedule: [Weekday]?
+    private var schedule: [Weekday]?
     private var emoji: String?
     private var color: UIColor?
     
