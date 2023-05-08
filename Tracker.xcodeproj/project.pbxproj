@@ -21,6 +21,7 @@
 		A3B907A62A08ED090072E3BB /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907A52A08ED090072E3BB /* TrackerViewController.swift */; };
 		A3B907A82A08F2B50072E3BB /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907A72A08F2B50072E3BB /* Resources.swift */; };
 		A3B907AC2A09078D0072E3BB /* AddTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907AB2A09078D0072E3BB /* AddTrackerViewController.swift */; };
+		A3B907AE2A091DF60072E3BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907AD2A091DF60072E3BB /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		A3B907A52A08ED090072E3BB /* TrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewController.swift; sourceTree = "<group>"; };
 		A3B907A72A08F2B50072E3BB /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		A3B907AB2A09078D0072E3BB /* AddTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackerViewController.swift; sourceTree = "<group>"; };
+		A3B907AD2A091DF60072E3BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				A37B3C342A000ECC00E456F1 /* Assets.xcassets */,
 				A37B3C362A000ECC00E456F1 /* LaunchScreen.storyboard */,
 				A37B3C392A000ECC00E456F1 /* Info.plist */,
+				A3B907AD2A091DF60072E3BB /* ViewController.swift */,
 			);
 			path = Tracker;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				A37B3C2C2A000ECA00E456F1 /* AppDelegate.swift in Sources */,
 				A3B907A62A08ED090072E3BB /* TrackerViewController.swift in Sources */,
 				A3B907AC2A09078D0072E3BB /* AddTrackerViewController.swift in Sources */,
+				A3B907AE2A091DF60072E3BB /* ViewController.swift in Sources */,
 				A37B3C2E2A000ECA00E456F1 /* SceneDelegate.swift in Sources */,
 				A3B907A42A08ECF30072E3BB /* StatisticViewController.swift in Sources */,
 				A3B907A82A08F2B50072E3BB /* Resources.swift in Sources */,
