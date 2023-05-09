@@ -36,10 +36,10 @@
 		A3B907F52A09536A0072E3BB /* SelectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907F42A09536A0072E3BB /* SelectionTitle.swift */; };
 		A3B907F72A0953B10072E3BB /* TrackerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907F62A0953B10072E3BB /* TrackerCell.swift */; };
 		A3B907F92A0953D80072E3BB /* TrackerCategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907F82A0953D80072E3BB /* TrackerCategoryLabel.swift */; };
-		A3B907FB2A0955AD0072E3BB /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907FA2A0955AD0072E3BB /* Int+Extensions.swift */; };
 		A3B907FD2A0956A10072E3BB /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907FC2A0956A10072E3BB /* UICollectionView+Extensions.swift */; };
 		A3B907FF2A0957E10072E3BB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907FE2A0957E10072E3BB /* TextField.swift */; };
 		A3B908012A095B260072E3BB /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B908002A095B260072E3BB /* Button.swift */; };
+		A3B908042A0ADBE90072E3BB /* Int+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B908032A0ADBE90072E3BB /* Int+Extentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,10 +93,10 @@
 		A3B907F42A09536A0072E3BB /* SelectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTitle.swift; sourceTree = "<group>"; };
 		A3B907F62A0953B10072E3BB /* TrackerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCell.swift; sourceTree = "<group>"; };
 		A3B907F82A0953D80072E3BB /* TrackerCategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryLabel.swift; sourceTree = "<group>"; };
-		A3B907FA2A0955AD0072E3BB /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		A3B907FC2A0956A10072E3BB /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		A3B907FE2A0957E10072E3BB /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		A3B908002A095B260072E3BB /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		A3B908032A0ADBE90072E3BB /* Int+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extentions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,8 +189,8 @@
 			children = (
 				A3B9079C2A08E8D40072E3BB /* UIColor+Extensions.swift */,
 				A3B907DB2A0942370072E3BB /* Date+Extensions.swift */,
-				A3B907FA2A0955AD0072E3BB /* Int+Extensions.swift */,
 				A3B907FC2A0956A10072E3BB /* UICollectionView+Extensions.swift */,
+				A3B908032A0ADBE90072E3BB /* Int+Extentions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -421,6 +421,7 @@
 				A3B907F92A0953D80072E3BB /* TrackerCategoryLabel.swift in Sources */,
 				A3B907AE2A091DF60072E3BB /* ViewController.swift in Sources */,
 				A3B907E82A094AA40072E3BB /* WeekdayCell.swift in Sources */,
+				A3B908042A0ADBE90072E3BB /* Int+Extentions.swift in Sources */,
 				A37B3C2E2A000ECA00E456F1 /* SceneDelegate.swift in Sources */,
 				A3B907EB2A094D0A0072E3BB /* TrackerFormViewController.swift in Sources */,
 				A3B907FD2A0956A10072E3BB /* UICollectionView+Extensions.swift in Sources */,
@@ -434,7 +435,6 @@
 				A3B907A82A08F2B50072E3BB /* Resources.swift in Sources */,
 				A3B907F12A0952E70072E3BB /* EmojiCell.swift in Sources */,
 				A3B907EF2A0952690072E3BB /* ListCell.swift in Sources */,
-				A3B907FB2A0955AD0072E3BB /* Int+Extensions.swift in Sources */,
 				A3B907A02A08EB3F0072E3BB /* TabBarController.swift in Sources */,
 				A3B9079D2A08E8D40072E3BB /* UIColor+Extensions.swift in Sources */,
 			);
