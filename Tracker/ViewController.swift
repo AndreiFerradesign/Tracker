@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Tracker
 //
-//  Created by Andrei Kashin on 01.05.2023.
+//  Created by Andrei Kashin on 08.05.2023.
 //
 
 import UIKit
@@ -16,4 +16,3 @@ class ViewController: UIViewController {
 
 
 }
-
