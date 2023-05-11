@@ -21,7 +21,6 @@
 		A3B907A62A08ED090072E3BB /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907A52A08ED090072E3BB /* TrackerViewController.swift */; };
 		A3B907A82A08F2B50072E3BB /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907A72A08F2B50072E3BB /* Resources.swift */; };
 		A3B907AC2A09078D0072E3BB /* AddTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907AB2A09078D0072E3BB /* AddTrackerViewController.swift */; };
-		A3B907AE2A091DF60072E3BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907AD2A091DF60072E3BB /* ViewController.swift */; };
 		A3B907DC2A0942370072E3BB /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907DB2A0942370072E3BB /* Date+Extensions.swift */; };
 		A3B907DF2A0947F10072E3BB /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907DE2A0947F10072E3BB /* Tracker.swift */; };
 		A3B907E12A0948370072E3BB /* TrackerCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907E02A0948370072E3BB /* TrackerCategory.swift */; };
@@ -38,7 +37,7 @@
 		A3B907F92A0953D80072E3BB /* TrackerCategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907F82A0953D80072E3BB /* TrackerCategoryLabel.swift */; };
 		A3B907FD2A0956A10072E3BB /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907FC2A0956A10072E3BB /* UICollectionView+Extensions.swift */; };
 		A3B907FF2A0957E10072E3BB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907FE2A0957E10072E3BB /* TextField.swift */; };
-		A3B908012A095B260072E3BB /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B908002A095B260072E3BB /* Button.swift */; };
+		A3B908012A095B260072E3BB /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B908002A095B260072E3BB /* RoundedButton.swift */; };
 		A3B908042A0ADBE90072E3BB /* Int+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B908032A0ADBE90072E3BB /* Int+Extentions.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +77,6 @@
 		A3B907A52A08ED090072E3BB /* TrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewController.swift; sourceTree = "<group>"; };
 		A3B907A72A08F2B50072E3BB /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		A3B907AB2A09078D0072E3BB /* AddTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackerViewController.swift; sourceTree = "<group>"; };
-		A3B907AD2A091DF60072E3BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A3B907DB2A0942370072E3BB /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A3B907DE2A0947F10072E3BB /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		A3B907E02A0948370072E3BB /* TrackerCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategory.swift; sourceTree = "<group>"; };
@@ -95,7 +93,7 @@
 		A3B907F82A0953D80072E3BB /* TrackerCategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryLabel.swift; sourceTree = "<group>"; };
 		A3B907FC2A0956A10072E3BB /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		A3B907FE2A0957E10072E3BB /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		A3B908002A095B260072E3BB /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		A3B908002A095B260072E3BB /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		A3B908032A0ADBE90072E3BB /* Int+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extentions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,7 +160,6 @@
 				A37B3C342A000ECC00E456F1 /* Assets.xcassets */,
 				A37B3C362A000ECC00E456F1 /* LaunchScreen.storyboard */,
 				A37B3C392A000ECC00E456F1 /* Info.plist */,
-				A3B907AD2A091DF60072E3BB /* ViewController.swift */,
 			);
 			path = Tracker;
 			sourceTree = "<group>";
@@ -274,7 +271,7 @@
 			children = (
 				A3B907EC2A09523B0072E3BB /* ListItem.swift */,
 				A3B907FE2A0957E10072E3BB /* TextField.swift */,
-				A3B908002A095B260072E3BB /* Button.swift */,
+				A3B908002A095B260072E3BB /* RoundedButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -419,7 +416,6 @@
 				A3B907DC2A0942370072E3BB /* Date+Extensions.swift in Sources */,
 				A3B907E62A094A770072E3BB /* ScheduleViewController.swift in Sources */,
 				A3B907F92A0953D80072E3BB /* TrackerCategoryLabel.swift in Sources */,
-				A3B907AE2A091DF60072E3BB /* ViewController.swift in Sources */,
 				A3B907E82A094AA40072E3BB /* WeekdayCell.swift in Sources */,
 				A3B908042A0ADBE90072E3BB /* Int+Extentions.swift in Sources */,
 				A37B3C2E2A000ECA00E456F1 /* SceneDelegate.swift in Sources */,
@@ -427,7 +423,7 @@
 				A3B907FD2A0956A10072E3BB /* UICollectionView+Extensions.swift in Sources */,
 				A3B907E12A0948370072E3BB /* TrackerCategory.swift in Sources */,
 				A3B907DF2A0947F10072E3BB /* Tracker.swift in Sources */,
-				A3B908012A095B260072E3BB /* Button.swift in Sources */,
+				A3B908012A095B260072E3BB /* RoundedButton.swift in Sources */,
 				A3B907ED2A09523B0072E3BB /* ListItem.swift in Sources */,
 				A3B907F32A0953050072E3BB /* ColorCell.swift in Sources */,
 				A3B907A42A08ECF30072E3BB /* StatisticViewController.swift in Sources */,
