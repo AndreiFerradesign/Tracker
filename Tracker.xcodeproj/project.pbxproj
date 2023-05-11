@@ -14,6 +14,7 @@
 		A37B3C382A000ECC00E456F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37B3C362A000ECC00E456F1 /* LaunchScreen.storyboard */; };
 		A37B3C432A000ECD00E456F1 /* TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B3C422A000ECD00E456F1 /* TrackerTests.swift */; };
 		A37B3C4D2A000ECD00E456F1 /* TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B3C4C2A000ECD00E456F1 /* TrackerUITests.swift */; };
+
 		A37B3C4F2A000ECD00E456F1 /* TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B3C4E2A000ECD00E456F1 /* TrackerUITestsLaunchTests.swift */; };
 		A3B9079D2A08E8D40072E3BB /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B9079C2A08E8D40072E3BB /* UIColor+Extensions.swift */; };
 		A3B907A02A08EB3F0072E3BB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B9079F2A08EB3F0072E3BB /* TabBarController.swift */; };
@@ -39,6 +40,7 @@
 		A3B907FF2A0957E10072E3BB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B907FE2A0957E10072E3BB /* TextField.swift */; };
 		A3B908012A095B260072E3BB /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B908002A095B260072E3BB /* RoundedButton.swift */; };
 		A3B908042A0ADBE90072E3BB /* Int+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B908032A0ADBE90072E3BB /* Int+Extentions.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,7 @@
 		A37B3C422A000ECD00E456F1 /* TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTests.swift; sourceTree = "<group>"; };
 		A37B3C482A000ECD00E456F1 /* TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37B3C4C2A000ECD00E456F1 /* TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITests.swift; sourceTree = "<group>"; };
+
 		A37B3C4E2A000ECD00E456F1 /* TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A3B9079C2A08E8D40072E3BB /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		A3B9079F2A08EB3F0072E3BB /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 		A3B907FE2A0957E10072E3BB /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		A3B908002A095B260072E3BB /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		A3B908032A0ADBE90072E3BB /* Int+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extentions.swift"; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				A37B3C4C2A000ECD00E456F1 /* TrackerUITests.swift */,
-				A37B3C4E2A000ECD00E456F1 /* TrackerUITestsLaunchTests.swift */,
 			);
 			path = TrackerUITests;
 			sourceTree = "<group>";
@@ -449,7 +452,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A37B3C4D2A000ECD00E456F1 /* TrackerUITests.swift in Sources */,
-				A37B3C4F2A000ECD00E456F1 /* TrackerUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,7 +618,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -648,7 +652,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
