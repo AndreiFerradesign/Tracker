@@ -26,7 +26,7 @@ final class TrackerFormViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 17)
-        label.textColor = .red
+        label.textColor = .yaRed
         label.text = "Ограничение 38 символов"
         return label
     }()
@@ -35,19 +35,19 @@ final class TrackerFormViewController: UIViewController {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.separatorStyle = .none
-        table.isScrollEnabled = false
+        table.isScrollEnabled = true
         table.register(ListCell.self, forCellReuseIdentifier: ListCell.identifier)
         return table
     }()
     
     private lazy var cancelButton: UIButton = {
-        let button = Button.redButton(title: "Отменить")
+        let button = RoundedButton.redButton(title: "Отменить")
         button.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
         return button
     }()
     
     private lazy var confirmButton: UIButton = {
-        let button = Button(title: "Создать")
+        let button = RoundedButton(title: "Создать")
         button.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
         button.isEnabled = false
         return button
@@ -263,10 +263,7 @@ private extension TrackerFormViewController {
 
 extension TrackerFormViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if data.schedule == nil {
-            return 1
-        }
-        return 2
+         data.schedule == nil ?  1 :  2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -293,14 +290,14 @@ extension TrackerFormViewController: UITableViewDataSource {
 
 extension TrackerFormViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 1:
+        
+        if (indexPath.row != 0) {
             guard let schedule = data.schedule else { return }
             let scheduleViewController = ScheduleViewController(selectedWeekdays: schedule)
             scheduleViewController.delegate = self
             let navigationController = UINavigationController(rootViewController: scheduleViewController)
             present(navigationController, animated: true)
-        default:
+        } else {
             return
         }
     }

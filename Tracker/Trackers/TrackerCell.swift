@@ -44,7 +44,7 @@ final class TrackerCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.numberOfLines = 0
-        label.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        label.textColor = .yaWhite
         return label
     }()
     
@@ -52,7 +52,7 @@ final class TrackerCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        label.textColor = .black
+        label.textColor = .yaBlack
         return label
     }()
     
@@ -61,7 +61,7 @@ final class TrackerCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        button.layer.cornerRadius = 17
+        button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(didTapCompleteButton), for: .touchUpInside)
         return button
     }()

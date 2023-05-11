@@ -20,7 +20,7 @@ final class ScheduleViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(WeekdayCell.self, forCellReuseIdentifier: WeekdayCell.identifier)
         table.separatorStyle = .none
-        table.isScrollEnabled = false
+        table.isScrollEnabled = true
         return table
     }()
     
@@ -29,7 +29,7 @@ final class ScheduleViewController: UIViewController {
         button.setTitle("Готово", for: .normal)
         button.backgroundColor = .yaBlack
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.yaWhite, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
         button.translatesAutoresizingMaskIntoConstraints = false

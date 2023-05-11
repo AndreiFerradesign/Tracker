@@ -14,7 +14,7 @@ final class ListItem: UIView {
     private let border: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .gray
+        view.backgroundColor = .yaGray
         view.isHidden = true
         return view
     }()
@@ -33,7 +33,6 @@ final class ListItem: UIView {
     // MARK: - Methods
     
     func configure(with position: Position = .middle) {
-        layer.masksToBounds = true
         layer.cornerRadius = 10
         
         switch position {
@@ -54,6 +53,7 @@ final class ListItem: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 16
         backgroundColor = .background
+        layer.masksToBounds = true
         
         addSubview(border)
         

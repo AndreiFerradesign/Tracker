@@ -42,7 +42,7 @@ final class EmojiCell: UICollectionViewCell {
     }
     
     func select() {
-        contentView.backgroundColor = .lightGray
+        contentView.backgroundColor = .yaLightGray
     }
     
     func deselect() {

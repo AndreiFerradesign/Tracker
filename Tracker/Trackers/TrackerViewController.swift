@@ -25,7 +25,7 @@ final class TrackerController: UIViewController {
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .bold)
         )!,
                                            target: self, action: #selector(didTapPlusButton))
-        button.tintColor = .black
+        button.tintColor = .yaBlack
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -33,8 +33,8 @@ final class TrackerController: UIViewController {
     private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.backgroundColor = .white
-        picker.tintColor = .blue
+        picker.backgroundColor = .yaWhite
+        picker.tintColor = .yaBlue
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .compact
         picker.locale = Locale(identifier: "ru_RU")
@@ -56,7 +56,7 @@ final class TrackerController: UIViewController {
     private let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .yaWhite
         view.register(
             TrackerCell.self,
             forCellWithReuseIdentifier: TrackerCell.identifier
@@ -81,7 +81,7 @@ final class TrackerController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.text = "Что будем отслеживать?"
-        label.textColor = .black
+        label.textColor = .yaBlack
         return label
     }()
     
@@ -99,9 +99,9 @@ final class TrackerController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Фильтры", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        button.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        button.tintColor = .yaBlue
         button.layer.cornerRadius = 16
-        button.backgroundColor = .blue
+        button.backgroundColor = .yaBlue
         return button
     }()
     
@@ -113,7 +113,7 @@ final class TrackerController: UIViewController {
     private var currentDate = Date.from(date: Date())!
     private var completedTrackers: Set<TrackerRecord> = []
     private var visibleCategories: [TrackerCategory] {
-        let weekday = Calendar.current.component(.weekday, from: currentDate)
+    let weekday = Calendar.current.component(.weekday, from: currentDate)
         
         var result = [TrackerCategory]()
         for category in categories {

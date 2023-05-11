@@ -13,6 +13,8 @@ protocol WeekdayCellDelegate: AnyObject {
 
 final class WeekdayCell: UITableViewCell {
     
+    static let identifier = "WeekdayCell"
+    
     // MARK: - Layout elements
     
     private lazy var listItem = ListItem()
@@ -34,7 +36,6 @@ final class WeekdayCell: UITableViewCell {
     
     // MARK: - Properties
     
-    static let identifier = "WeekdayCell"
     weak var delegate: WeekdayCellDelegate?
     private var weekday: Weekday?
     

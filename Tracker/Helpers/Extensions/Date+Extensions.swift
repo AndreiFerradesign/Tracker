@@ -14,7 +14,7 @@ extension Date {
         dateComponents.year = year
         dateComponents.month = month
         dateComponents.day = day
-        return calendar.date(from: dateComponents) ?? nil
+        return calendar.date(from: dateComponents)
     }
     
     static func from(date: Date) -> Date? {

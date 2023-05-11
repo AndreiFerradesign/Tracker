@@ -20,7 +20,7 @@ final class AddTrackerViewController: UIViewController {
         button.setTitle("Привычка", for: .normal)
         button.backgroundColor = .yaBlack
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.yaWhite, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(didTapAddHabitButton), for: .touchUpInside)
@@ -32,7 +32,7 @@ final class AddTrackerViewController: UIViewController {
         button.setTitle("Нерегулярное событие", for: .normal)
         button.backgroundColor = .yaBlack
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.yaWhite, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(didTapAddIrregularEventButton), for: .touchUpInside)
@@ -98,7 +98,7 @@ private extension AddTrackerViewController {
     
     func setupContent() {
         title = "Создание трекера"
-        view.backgroundColor = .white
+        view.backgroundColor = .yaWhite
         
         view.addSubview(buttonsStack)
         

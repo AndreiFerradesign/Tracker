@@ -31,7 +31,7 @@ final class StatisticController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.text = "Анализировать пока нечего"
-        label.textColor = .black
+        label.textColor = .yaBlack
         return label
     }()
     
