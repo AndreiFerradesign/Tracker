@@ -13,6 +13,17 @@ protocol TrackerCellDelegate: AnyObject {
 
 final class TrackerCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
+    static let identifier = "TrackerCell"
+    weak var delegate: TrackerCellDelegate?
+    private var tracker: Tracker?
+    private var days = 0 {
+        willSet {
+            daysCountLabel.text = "\(newValue.days())"
+        }
+    }
+    
     // MARK: - Layout elements
     
     private let cardView: UIView = {
@@ -65,17 +76,6 @@ final class TrackerCell: UICollectionViewCell {
         button.addTarget(self, action: #selector(didTapCompleteButton), for: .touchUpInside)
         return button
     }()
-    
-    // MARK: - Properties
-    
-    static let identifier = "TrackerCell"
-    weak var delegate: TrackerCellDelegate?
-    private var tracker: Tracker?
-    private var days = 0 {
-        willSet {
-            daysCountLabel.text = "\(newValue.days())"
-        }
-    }
     
     // MARK: - Lifecycle
     
@@ -139,7 +139,7 @@ final class TrackerCell: UICollectionViewCell {
 
 // MARK: - Layout methods
 
-private extension TrackerCell {
+extension TrackerCell {
     func setupContent() {
         contentView.addSubview(cardView)
         contentView.addSubview(iconView)

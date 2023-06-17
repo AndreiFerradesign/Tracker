@@ -20,6 +20,9 @@ final class RoundedButton: UIButton {
         layer.cornerRadius = 16
     }
 }
+
+// MARK: - Layout methods
+
 extension RoundedButton {
     static func redButton(title: String) -> Self {
         let button = self.init(color: .clear, title: title)

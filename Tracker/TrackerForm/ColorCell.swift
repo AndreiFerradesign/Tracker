@@ -9,6 +9,11 @@ import UIKit
 
 final class ColorCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
+    static let identifier = "ColorCell"
+    private var color: UIColor?
+    
     // MARK: - Layout elements
     
     private let colorView: UIView = {
@@ -18,11 +23,6 @@ final class ColorCell: UICollectionViewCell {
         view.layer.cornerRadius = 8
         return view
     }()
-    
-    // MARK: - Properties
-    
-    static let identifier = "ColorCell"
-    private var color: UIColor?
     
     // MARK: - Lifecycle
     
@@ -43,21 +43,11 @@ final class ColorCell: UICollectionViewCell {
         colorView.backgroundColor = color
         self.color = color
     }
-    
-    func select() {
-        guard let color else { return }
-        contentView.layer.borderColor = color.withAlphaComponent(0.3).cgColor
-        contentView.layer.borderWidth = 3
-    }
-    
-    func deselect() {
-        contentView.layer.borderWidth = 0
-    }
 }
 
 // MARK: - Layout methods
 
-private extension ColorCell {
+extension ColorCell {
     func setupContent() {
         contentView.layer.cornerRadius = 8
         contentView.layer.masksToBounds = true
@@ -72,5 +62,19 @@ private extension ColorCell {
             colorView.widthAnchor.constraint(equalToConstant: 40),
             colorView.heightAnchor.constraint(equalTo: colorView.widthAnchor),
         ])
+    }
+}
+
+// MARK: - SelectionCellProtocol
+
+extension ColorCell: SelectionCellProtocol {
+    func select() {
+        guard let color else { return }
+        contentView.layer.borderColor = color.withAlphaComponent(0.3).cgColor
+        contentView.layer.borderWidth = 3
+    }
+    
+    func deselect() {
+        contentView.layer.borderWidth = 0
     }
 }

@@ -9,6 +9,10 @@ import UIKit
 
 final class EmojiCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
+    static let identifier = "EmojiCell"
+    
     // MARK: - Layout elements
     
     private let emojiLabel: UILabel = {
@@ -17,10 +21,6 @@ final class EmojiCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 32)
         return label
     }()
-    
-    // MARK: - Properties
-    
-    static let identifier = "EmojiCell"
     
     // MARK: - Lifecycle
     
@@ -40,19 +40,11 @@ final class EmojiCell: UICollectionViewCell {
     func configure(with label: String) {
         emojiLabel.text = label
     }
-    
-    func select() {
-        contentView.backgroundColor = .yaLightGray
-    }
-    
-    func deselect() {
-        contentView.backgroundColor = .clear
-    }
 }
 
 // MARK: - Layout methods
 
-private extension EmojiCell {
+extension EmojiCell {
     func setupContent() {
         contentView.layer.cornerRadius = 16
         contentView.layer.masksToBounds = true
@@ -67,3 +59,17 @@ private extension EmojiCell {
         ])
     }
 }
+
+// MARK: - SelectionCellProtocol
+
+extension EmojiCell: SelectionCellProtocol {
+    
+    func select() {
+        contentView.backgroundColor = .yaLightGray
+    }
+    
+    func deselect() {
+        contentView.backgroundColor = .clear
+    }
+}
+

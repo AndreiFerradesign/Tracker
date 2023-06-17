@@ -13,7 +13,11 @@ protocol WeekdayCellDelegate: AnyObject {
 
 final class WeekdayCell: UITableViewCell {
     
+    // MARK: - Properties
+    
     static let identifier = "WeekdayCell"
+    weak var delegate: WeekdayCellDelegate?
+    private var weekday: Weekday?
     
     // MARK: - Layout elements
     
@@ -33,11 +37,6 @@ final class WeekdayCell: UITableViewCell {
         switchView.addTarget(self, action: #selector(didToggleSwitchView), for: .valueChanged)
         return switchView
     }()
-    
-    // MARK: - Properties
-    
-    weak var delegate: WeekdayCellDelegate?
-    private var weekday: Weekday?
     
     // MARK: - Lifecycle
     
@@ -69,6 +68,8 @@ final class WeekdayCell: UITableViewCell {
         switchView.isOn = isSelected
     }
 }
+
+// MARK: - Layout methods
 
 private extension WeekdayCell {
     func setupContent() {

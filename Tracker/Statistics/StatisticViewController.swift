@@ -51,7 +51,6 @@ final class StatisticController: UIViewController {
         setupContent()
         setupConstraints()
     }
-    
 }
 
 // MARK: - Layout methods
