@@ -66,6 +66,8 @@ final class ListItem: UIView {
     }
 }
 
+// MARK: - Layout methods
+
 extension ListItem {
     enum Position {
         case first, middle, last, alone

@@ -9,9 +9,12 @@ import UIKit
 
 final class ListCell: UITableViewCell {
     
+    // MARK: - Properties
+    
+    static let identifier = "ListCell"
+    private lazy var listItem = ListItem()
     // MARK: - Layout elements
     
-    private lazy var listItem = ListItem()
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,10 +47,6 @@ final class ListCell: UITableViewCell {
         return button
     }()
     
-    // MARK: - Properties
-    
-    static let identifier = "ListCell"
-    
     // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -75,7 +74,7 @@ final class ListCell: UITableViewCell {
 
 // MARK: - Layout methods
 
-private extension ListCell {
+extension ListCell {
     func setupContent() {
         selectionStyle = .none
         contentView.addSubview(listItem)

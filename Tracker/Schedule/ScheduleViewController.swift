@@ -13,6 +13,11 @@ protocol ScheduleViewControllerDelegate: AnyObject {
 
 final class ScheduleViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    weak var delegate: ScheduleViewControllerDelegate?
+    private var selectedWeekdays: Set<Weekday> = []
+    
     // MARK: - Layout elements
     
     private let weekdaysTableView: UITableView = {
@@ -36,11 +41,6 @@ final class ScheduleViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
         return button
     }()
-    
-    // MARK: - Properties
-    
-    weak var delegate: ScheduleViewControllerDelegate?
-    private var selectedWeekdays: Set<Weekday> = []
     
     // MARK: - Lifecycle
     

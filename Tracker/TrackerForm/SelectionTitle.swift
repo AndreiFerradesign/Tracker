@@ -9,6 +9,10 @@ import UIKit
 
 final class SelectionTitle: UICollectionReusableView {
     
+    // MARK: - Properties
+    
+    static let identifier = "SelectionTitle"
+    
     // MARK: - Layout elements
     
     private let titleLabel: UILabel = {
@@ -17,10 +21,6 @@ final class SelectionTitle: UICollectionReusableView {
         label.font = UIFont.boldSystemFont(ofSize: 19)
         return label
     }()
-    
-    // MARK: - Properties
-    
-    static let identifier = "SelectionTitle"
     
     // MARK: - Lifecycle
     
