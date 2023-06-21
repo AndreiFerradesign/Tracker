@@ -56,13 +56,16 @@ final class TrackerController: UIViewController {
     private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.backgroundColor = .yaWhite
+        picker.backgroundColor = .yaDatePickerColor
         picker.tintColor = .yaBlue
         picker.datePickerMode = .date
+        picker.layer.cornerRadius = 8
+        picker.layer.masksToBounds = true
         picker.preferredDatePickerStyle = .compact
         picker.locale = Locale(identifier: "ru_RU")
         picker.calendar = Calendar(identifier: .iso8601)
         picker.maximumDate = Date()
+        picker.overrideUserInterfaceStyle = .light
         picker.addTarget(self, action: #selector(didChangedDatePicker), for: .valueChanged)
         return picker
     }()
@@ -145,7 +148,7 @@ final class TrackerController: UIViewController {
         try? trackerRecordStore.loadCompletedTrackers(by: currentDate)
         
         checkNumberOfTrackers()
-        
+    
     }
     
     // MARK: - Actions
@@ -175,7 +178,7 @@ final class TrackerController: UIViewController {
             filterButton.isHidden = true
         } else {
             notFoundStack.isHidden = true
-            filterButton.isHidden = true // filter button turn off for sprint 15
+            filterButton.isHidden = false // filter button turn off for sprint 15
         }
     }
 }
@@ -184,7 +187,7 @@ final class TrackerController: UIViewController {
 
 private extension TrackerController {
     func setupContent() {
-        view.backgroundColor = .white
+        view.backgroundColor = .yaWhite
         view.addSubview(addButton)
         view.addSubview(titleLabel)
         view.addSubview(datePicker)
@@ -209,8 +212,8 @@ private extension TrackerController {
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             titleLabel.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 13),
             // datePicker
-            datePicker.widthAnchor.constraint(equalToConstant: 120),
-            datePicker.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            datePicker.widthAnchor.constraint(equalToConstant: 110),
+            datePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 13),
             datePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             // searchBar
             searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),

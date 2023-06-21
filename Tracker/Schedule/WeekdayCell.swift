@@ -25,7 +25,7 @@ final class WeekdayCell: UITableViewCell {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = .yaBlack
         label.font = UIFont.systemFont(ofSize: 17)
         return label
     }()
@@ -33,7 +33,7 @@ final class WeekdayCell: UITableViewCell {
     private lazy var switchView: UISwitch = {
         let switchView = UISwitch()
         switchView.translatesAutoresizingMaskIntoConstraints = false
-        switchView.onTintColor = .blue
+        switchView.onTintColor = .yaBlue
         switchView.addTarget(self, action: #selector(didToggleSwitchView), for: .valueChanged)
         return switchView
     }()

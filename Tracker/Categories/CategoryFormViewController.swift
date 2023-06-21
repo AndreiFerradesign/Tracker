@@ -20,10 +20,10 @@ final class CategoryFormViewController: UIViewController {
     private var isConfirmButtonEnabled: Bool = false {
         willSet {
             if newValue {
-                button.backgroundColor = .black
+                button.backgroundColor = .yaBlack
                 button.isEnabled = true
             } else {
-                button.backgroundColor = .gray
+                button.backgroundColor = .yaGray
                 button.isEnabled = false
             }
         }
@@ -40,7 +40,7 @@ final class CategoryFormViewController: UIViewController {
         let button = RoundedButton(title: "Готово")
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         button.isEnabled = false
-        button.backgroundColor = .gray
+        button.backgroundColor = .yaGray
         return button
     }()
     
@@ -90,7 +90,7 @@ final class CategoryFormViewController: UIViewController {
 private extension CategoryFormViewController {
     func setupContent() {
         title = "Новая категория"
-        view.backgroundColor = .white
+        view.backgroundColor = .yaWhite
         view.addSubview(textField)
         view.addSubview(button)
     }

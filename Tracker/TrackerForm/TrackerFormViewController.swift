@@ -278,7 +278,7 @@ private extension TrackerFormViewController {
         colorsCollection.dataSource = self
         colorsCollection.delegate = self
         
-        view.backgroundColor = .white
+        view.backgroundColor = .yaWhite
         
         view.addSubview(scrollView)
         

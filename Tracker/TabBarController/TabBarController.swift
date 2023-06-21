@@ -29,9 +29,9 @@ final class TabBarController: UITabBarController {
         tabBar.barTintColor = .yaGray
         tabBar.backgroundColor = .yaWhite
         
-        tabBar.layer.borderColor = UIColor.yaGray.cgColor
-        tabBar.layer.borderWidth = 1
-        tabBar.layer.masksToBounds = true
+//        tabBar.layer.borderColor = UIColor.yaWhite.cgColor
+//        tabBar.layer.borderWidth = 1
+//        tabBar.layer.masksToBounds = true
         
         let trackerViewController = TrackerController()
         let statisticViewController = StatisticController()
