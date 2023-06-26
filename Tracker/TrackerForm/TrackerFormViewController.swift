@@ -42,10 +42,10 @@ final class TrackerFormViewController: UIViewController {
     private var isConfirmButtonEnabled: Bool = false {
         willSet {
             if newValue {
-                confirmButton.backgroundColor = .black
+                confirmButton.backgroundColor = .yaBlack
                 confirmButton.isEnabled = true
             } else {
-                confirmButton.backgroundColor = .gray
+                confirmButton.backgroundColor = .yaGray
                 confirmButton.isEnabled = false
             }
         }

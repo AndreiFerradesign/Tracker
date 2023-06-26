@@ -11,6 +11,7 @@ final class TrackerController: UIViewController {
     
     // MARK: - Properties
     
+    private let analyticsService = AnalyticsService()
     private let trackerStore = TrackerStore()
     private let trackerCategoryStore = TrackerCategoryStore()
     private let trackerRecordStore = TrackerRecordStore()
@@ -128,6 +129,7 @@ final class TrackerController: UIViewController {
         button.tintColor = .yaBlue
         button.layer.cornerRadius = 16
         button.backgroundColor = .yaBlue
+        button.addTarget(self, action: #selector(didTapFilterButton), for: .touchUpInside)
         return button
     }()
     
@@ -151,10 +153,24 @@ final class TrackerController: UIViewController {
     
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        analyticsService.report(event: "open", params: ["screen": "Main"])
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        analyticsService.report(event: "close", params: ["screen": "Main"])
+    }
+    
     // MARK: - Actions
     
     @objc
     private func didTapPlusButton() {
+        analyticsService.report(event: "click", params: [
+            "screen": "Main",
+            "item": "add_track"
+        ])
         let addTrackerViewController = AddTrackerViewController()
         addTrackerViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: addTrackerViewController)
@@ -170,6 +186,14 @@ final class TrackerController: UIViewController {
             try trackerRecordStore.loadCompletedTrackers(by: currentDate)
         } catch {}
         collectionView.reloadData()
+    }
+    
+    @objc
+    private func didTapFilterButton() {
+        analyticsService.report(event: "click", params: [
+            "screen": "Main",
+            "item": "filter"
+        ])
     }
     
     private func checkNumberOfTrackers() {
