@@ -12,7 +12,7 @@ final class TrackerController: UIViewController {
     // MARK: - Properties
     
     private let analyticsService = AnalyticsService()
-    private let trackerStore = TrackerStore()
+    private var trackerStore: TrackerStoreProtocol
     private let trackerCategoryStore = TrackerCategoryStore()
     private let trackerRecordStore = TrackerRecordStore()
     private let params = UICollectionView.GeometricParams(
@@ -32,6 +32,7 @@ final class TrackerController: UIViewController {
     }
     private var currentDate = Date.from(date: Date())!
     private var completedTrackers: Set<TrackerRecord> = []
+    private var editingTracker: Tracker?
     
     // MARK: - Layout elements
     
@@ -96,31 +97,11 @@ final class TrackerController: UIViewController {
         return view
     }()
     
-    private let notFoundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "star")
-        return imageView
-    }()
-    
-    private let notFoundLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        label.text = "Что будем отслеживать?"
-        label.textColor = .yaBlack
-        return label
-    }()
-    
-    private let notFoundStack: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.spacing = 8
-        return stack
-    }()
-    
+    private let notFoundStack = NotFoundStack(
+        label: "Что будем отслеживать?",
+        image: UIImage(named: "Star")
+    )
+
     private lazy var filterButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -134,6 +115,15 @@ final class TrackerController: UIViewController {
     }()
     
     // MARK: - Lifecycle
+    
+    init(trackerStore: TrackerStoreProtocol) {
+        self.trackerStore = trackerStore
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) is not supported")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -205,6 +195,59 @@ final class TrackerController: UIViewController {
             filterButton.isHidden = false // filter button turn off for sprint 15
         }
     }
+    
+    private func presentFormController(
+        with data: Tracker.Data? = nil,
+        of trackerType: AddTrackerViewController.TrackerType,
+        formType: TrackerFormViewController.FormType
+    ) {
+        let trackerFormViewController = TrackerFormViewController(
+            formType: formType,
+            trackerType: trackerType,
+            data: data
+        )
+        trackerFormViewController.delegate = self
+        let navigationController = UINavigationController(rootViewController: trackerFormViewController)
+        navigationController.isModalInPresentation = true
+        present(navigationController, animated: true)
+    }
+    
+    private func onEdit(_ tracker: Tracker) {
+        analyticsService.report(event: "click", params: [
+            "screen": "Main",
+            "item": "edit"
+        ])
+        
+        let type: AddTrackerViewController.TrackerType = tracker.schedule != nil ? .habit : .irregularEvent
+        editingTracker = tracker
+        presentFormController(with: tracker.data, of: type, formType: .edit)
+    }
+    
+    private func onDelete(_ tracker: Tracker) {
+        let alert = UIAlertController(
+            title: nil,
+            message: "Уверены что хотите удалить трекер?",
+            preferredStyle: .actionSheet
+        )
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
+        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { [weak self] _ in
+            guard let self else { return }
+            self.analyticsService.report(event: "click", params: [
+                "screen": "Main",
+                "item": "delete"
+            ])
+            try? self.trackerStore.deleteTracker(tracker)
+        }
+        
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
+    
+    private func onTogglePin(_ tracker: Tracker) {
+        try? trackerStore.togglePin(for: tracker)
+    }
 }
 
 // MARK: - Layout methods
@@ -219,9 +262,6 @@ private extension TrackerController {
         view.addSubview(collectionView)
         view.addSubview(notFoundStack)
         view.addSubview(filterButton)
-        
-        notFoundStack.addArrangedSubview(notFoundImageView)
-        notFoundStack.addArrangedSubview(notFoundLabel)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -260,16 +300,41 @@ private extension TrackerController {
     }
 }
 
+extension TrackerController: UIContextMenuInteractionDelegate {
+    
+    func contextMenuInteraction(
+        _ interaction: UIContextMenuInteraction,
+        configurationForMenuAtLocation location: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        guard
+            let location = interaction.view?.convert(location, to: collectionView),
+            let indexPath = collectionView.indexPathForItem(at: location),
+            let tracker = trackerStore.tracker(at: indexPath)
+        else { return nil }
+        
+        return UIContextMenuConfiguration(actionProvider:  { actions in
+            UIMenu(children: [
+                UIAction(title: tracker.isPinned ? "Открепить" : "Закрепить") { [weak self] _ in
+                    self?.onTogglePin(tracker)
+                },
+                UIAction(title: "Редактировать") { [weak self] _ in
+                    self?.onEdit(tracker)
+                },
+                UIAction(title: "Удалить", attributes: .destructive) { [weak self] _ in
+                    self?.onDelete(tracker)
+                }
+            ])
+        })
+    }
+    
+}
+
 // MARK: - AddTrackerViewControllerDelegate
 
 extension TrackerController: AddTrackerViewControllerDelegate {
     func didSelectTracker(with type: AddTrackerViewController.TrackerType) {
         dismiss(animated: true)
-        let trackerFormViewController = TrackerFormViewController(type: type)
-        trackerFormViewController.delegate = self
-        let navigationController = UINavigationController(rootViewController: trackerFormViewController)
-        navigationController.isModalInPresentation = true
-        present(navigationController, animated: true)
+        presentFormController(of: type, formType: .add)
     }
 }
 
@@ -316,13 +381,24 @@ extension TrackerController: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
-        
         let isCompleted = completedTrackers.contains { $0.date == currentDate && $0.trackerId == tracker.id }
-        trackerCell.configure(with: tracker, days: tracker.completedDaysCount, isCompleted: isCompleted)
+        let interaction = UIContextMenuInteraction(delegate: self)
+        trackerCell.configure(
+            with: tracker,
+            days: tracker.completedDaysCount,
+            isCompleted: isCompleted,
+            interaction: interaction
+        )
         trackerCell.delegate = self
         
         return trackerCell
     }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension TrackerController: UICollectionViewDelegate {
+
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -417,13 +493,21 @@ extension TrackerController: TrackerCellDelegate {
 // MARK: - TrackerFormViewControllerDelegate
 
 extension TrackerController: TrackerFormViewControllerDelegate {
-    func didTapConfirmButton(categoryLabel: TrackerCategory, trackerToAdd: Tracker) {
+    func didAddTracker(category: TrackerCategory, trackerToAdd: Tracker) {
         dismiss(animated: true)
-        try? trackerStore.addTracker(trackerToAdd, with: categoryLabel)
+        try? trackerStore.addTracker(trackerToAdd, with: category)
+    }
+    
+    func didUpdateTracker(with data: Tracker.Data) {
+        guard let editingTracker else { return }
+        dismiss(animated: true)
+        try? trackerStore.updateTracker(editingTracker, with: data)
+        self.editingTracker = nil
     }
     
     func didTapCancelButton() {
         collectionView.reloadData()
+        editingTracker = nil
         dismiss(animated: true)
     }
 }

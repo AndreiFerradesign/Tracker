@@ -17,6 +17,7 @@ final class TrackerCell: UICollectionViewCell {
     
     static let identifier = "TrackerCell"
     weak var delegate: TrackerCellDelegate?
+    private let analyticsService = AnalyticsService()
     private var tracker: Tracker?
     private var days = 0 {
         willSet {
@@ -100,10 +101,11 @@ final class TrackerCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configure(with tracker: Tracker, days: Int, isCompleted: Bool) {
+    func configure(with tracker: Tracker, days: Int, isCompleted: Bool, interaction: UIInteraction) {
         self.tracker = tracker
         self.days = days
         cardView.backgroundColor = tracker.color
+        cardView.addInteraction(interaction)
         emoji.text = tracker.emoji
         trackerLabel.text = tracker.label
         completeButton.backgroundColor = tracker.color
@@ -132,6 +134,10 @@ final class TrackerCell: UICollectionViewCell {
     
     @objc
     private func didTapCompleteButton() {
+        analyticsService.report(event: "click", params: [
+            "screen": "Main",
+            "item": "track"
+        ])
         guard let tracker else { return }
         delegate?.didTapCompleteButton(of: self, with: tracker)
     }
