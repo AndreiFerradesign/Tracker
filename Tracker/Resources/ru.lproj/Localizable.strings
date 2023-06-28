@@ -12,3 +12,5 @@
 "tabbar.trackers" = "Трекеры";
 "tabbar.statistics" = "Статистика";
 "day" = "день";
+"stubTitle" = "Что будем отслеживать?";
+"stubTitleStatistics" = "Анализировать пока нечего";

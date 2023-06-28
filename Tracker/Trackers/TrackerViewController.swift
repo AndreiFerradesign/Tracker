@@ -98,8 +98,8 @@ final class TrackerController: UIViewController {
     }()
     
     private let notFoundStack = NotFoundStack(
-        label: "Что будем отслеживать?",
-        image: UIImage(named: "Star")
+        label: NSLocalizedString("stubTitle", tableName: "Localizable", comment: "stubTitle"),
+        image: UIImage(named: "star")
     )
 
     private lazy var filterButton: UIButton = {
@@ -142,7 +142,7 @@ final class TrackerController: UIViewController {
         checkNumberOfTrackers()
     
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         analyticsService.report(event: "open", params: ["screen": "Main"])
@@ -239,12 +239,20 @@ final class TrackerController: UIViewController {
                 "item": "delete"
             ])
             try? self.trackerStore.deleteTracker(tracker)
+            deleteRecordTracker(with: tracker)
+           
         }
         
         alert.addAction(deleteAction)
         alert.addAction(cancelAction)
         
         present(alert, animated: true)
+    }
+    
+    private func deleteRecordTracker(with tracker: Tracker) {
+        if let recordToRemove = completedTrackers.first(where: { $0.date == currentDate && $0.trackerId == tracker.id }) {
+            try? trackerRecordStore.remove(recordToRemove)
+        }
     }
     
     private func onTogglePin(_ tracker: Tracker) {

@@ -21,6 +21,7 @@ final class TrackerFormViewController: UIViewController {
     private let formType: FormType
     private let trackerType: AddTrackerViewController.TrackerType
     private let trackerCategoryStore = TrackerCategoryStore()
+    private var nameConfirmButton = "Создать"
     
     private var data: Tracker.Data {
         didSet {
@@ -44,6 +45,14 @@ final class TrackerFormViewController: UIViewController {
                 confirmButton.backgroundColor = .yaGray
                 confirmButton.isEnabled = false
             }
+        }
+    }
+    
+    private func confirmButtonForEditMode() {
+        if formType == .add {
+            nameConfirmButton = "Создать"
+        } else {
+            nameConfirmButton = "Изменить"
         }
     }
     
@@ -149,7 +158,7 @@ final class TrackerFormViewController: UIViewController {
     }()
     
     private lazy var confirmButton: UIButton = {
-        let button = RoundedButton(title: "Создать")
+        let button = RoundedButton(title: nameConfirmButton)
         button.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
         button.isEnabled = false
         return button
@@ -185,6 +194,8 @@ final class TrackerFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        confirmButtonForEditMode()
+        
         hideKeyboardWhenTappedAround()
         
         setFormFields()
@@ -193,7 +204,9 @@ final class TrackerFormViewController: UIViewController {
         setupConstraints()
 
         checkFormValidation()
+        
     }
+    
     
     // MARK: - Actions
     
@@ -484,17 +497,37 @@ extension TrackerFormViewController: UICollectionViewDataSource {
             guard let emojiCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.identifier, for: indexPath) as? EmojiCell else { return UICollectionViewCell() }
             let emoji = emojis[indexPath.row]
             emojiCell.configure(with: emoji)
+            if emoji == data.emoji {
+                emojiCell.select()
+                emojisCollection.selectItem(
+                    at: indexPath,
+                    animated: false,
+                    scrollPosition: .bottom
+                )
+            }
             return emojiCell
         case colorsCollection:
             guard let colorCell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.identifier, for: indexPath) as? ColorCell else { return UICollectionViewCell() }
             let color = colors[indexPath.row]
             colorCell.configure(with: color)
+            if
+                let dataColor = data.color,
+                UIColorMarshalling.makeHEX(from: color) == UIColorMarshalling.makeHEX(from: dataColor)
+            {
+                colorCell.select()
+                colorsCollection.selectItem(
+                    at: indexPath,
+                    animated: false,
+                    scrollPosition: .bottom
+                )
+            }
             return colorCell
         default:
             return UICollectionViewCell()
         }
     }
 }
+
 
 // MARK: - UICollectionViewDelegate
 

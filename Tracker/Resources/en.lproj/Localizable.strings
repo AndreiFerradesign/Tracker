@@ -12,3 +12,5 @@
 "tabbar.trackers" = "Trackers";
 "tabbar.statistics" = "Statistics";
 "day" = "day";
+"stubTitle" = "What will we track?";
+"stubTitleStatistics" = "There is nothing to analyze yet";

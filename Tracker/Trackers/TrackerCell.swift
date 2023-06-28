@@ -161,10 +161,10 @@ final class TrackerCell: UICollectionViewCell {
 extension TrackerCell {
     func setupContent() {
         contentView.addSubview(cardView)
-        contentView.addSubview(iconView)
-        contentView.addSubview(pinImageView)
-        contentView.addSubview(emoji)
-        contentView.addSubview(trackerLabel)
+        cardView.addSubview(iconView)
+        cardView.addSubview(pinImageView)
+        cardView.addSubview(emoji)
+        cardView.addSubview(trackerLabel)
         contentView.addSubview(daysCountLabel)
         contentView.addSubview(completeButton)
     }

@@ -20,7 +20,7 @@ final class StatisticController: UIViewController {
     }()
     
     private let notFoundStack = NotFoundStack(
-        label: "Анализировать пока нечего",
+        label: NSLocalizedString("stubTitleStatistics", tableName: "Localizable", comment: "stubTitleStatistics"),
         image: UIImage(named: "errorStatistic")
     )
     

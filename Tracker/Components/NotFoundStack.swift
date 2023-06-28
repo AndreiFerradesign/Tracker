@@ -7,8 +7,8 @@
 
 import UIKit
 
-
 final class NotFoundStack: UIStackView {
+    
     private let notFoundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
