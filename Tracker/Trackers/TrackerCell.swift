@@ -21,8 +21,6 @@ final class TrackerCell: UICollectionViewCell {
     private var tracker: Tracker?
     private var days = 0 {
         willSet {
-//            daysCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("filters", tableName: "Localizable"), newValue.days())
-        //    daysCountLabel.text = "\(newValue.days())"
             daysCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("numberOfDays", comment: "Число дней"), newValue)
         }
     }
@@ -44,6 +42,14 @@ final class TrackerCell: UICollectionViewCell {
         view.layer.cornerRadius = 12
         view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
         return view
+    }()
+    
+    private let pinImageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "pinSquare")
+        image.isHidden = false
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     private let emoji: UILabel = {
@@ -103,7 +109,11 @@ final class TrackerCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configure(with tracker: Tracker, days: Int, isCompleted: Bool, interaction: UIInteraction) {
+    func configure(with tracker: Tracker,
+                   days: Int,
+                   isCompleted: Bool,
+                   interaction: UIInteraction
+    ) {
         self.tracker = tracker
         self.days = days
         cardView.backgroundColor = tracker.color
@@ -111,6 +121,7 @@ final class TrackerCell: UICollectionViewCell {
         emoji.text = tracker.emoji
         trackerLabel.text = tracker.label
         completeButton.backgroundColor = tracker.color
+        pinImageView.isHidden = !tracker.isPinned
         toggleCompletedButton(to: isCompleted)
     }
     
@@ -151,6 +162,7 @@ extension TrackerCell {
     func setupContent() {
         contentView.addSubview(cardView)
         contentView.addSubview(iconView)
+        contentView.addSubview(pinImageView)
         contentView.addSubview(emoji)
         contentView.addSubview(trackerLabel)
         contentView.addSubview(daysCountLabel)
@@ -169,6 +181,11 @@ extension TrackerCell {
             iconView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 12),
             iconView.widthAnchor.constraint(equalToConstant: 24),
             iconView.heightAnchor.constraint(equalTo: iconView.widthAnchor),
+            // pinImageView
+            pinImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -12),
+            pinImageView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 18),
+            pinImageView.widthAnchor.constraint(equalToConstant: 8),
+            pinImageView.heightAnchor.constraint(equalToConstant: 12),
             // emoji
             emoji.centerXAnchor.constraint(equalTo: iconView.centerXAnchor),
             emoji.centerYAnchor.constraint(equalTo: iconView.centerYAnchor),

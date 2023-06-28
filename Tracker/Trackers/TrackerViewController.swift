@@ -186,6 +186,8 @@ final class TrackerController: UIViewController {
         ])
     }
     
+    // MARK: - Private methods
+    
     private func checkNumberOfTrackers() {
         if trackerStore.numberOfTrackers == 0 {
             notFoundStack.isHidden = false
@@ -398,7 +400,6 @@ extension TrackerController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension TrackerController: UICollectionViewDelegate {
-
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
