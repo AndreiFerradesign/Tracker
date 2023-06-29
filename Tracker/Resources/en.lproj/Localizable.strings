@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Tracker
+
+  Created by Andrei Kashin on 27.06.2023.
+  
+*/
+
+"main.title" = "Trackers";
+"statistics.title" = "Statistics";
+"filters" = "Filters";
+"tabbar.trackers" = "Trackers";
+"tabbar.statistics" = "Statistics";
+"day" = "day";
+"stubTitle" = "What will we track?";
+"stubTitleStatistics" = "There is nothing to analyze yet";

@@ -8,10 +8,10 @@
 import UIKit
 
 final class NotFoundStack: UIStackView {
+    
     private let notFoundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "Star")
         return imageView
     }()
     
@@ -19,14 +19,15 @@ final class NotFoundStack: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        label.textColor = .black
+        label.textColor = .yaBlack
         return label
     }()
     
-    convenience init(label: String) {
+    convenience init(label: String, image: UIImage?) {
         self.init()
         
         notFoundLabel.text = label
+        notFoundImageView.image = image
         
         setup()
         addSubviews()
@@ -44,4 +45,3 @@ final class NotFoundStack: UIStackView {
         addArrangedSubview(notFoundLabel)
     }
 }
-

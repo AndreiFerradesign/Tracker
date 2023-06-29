@@ -30,7 +30,12 @@ final class CategoriesViewController: UIViewController {
         table.backgroundColor = .clear
         return table
     }()
-    private let notFoundStack = NotFoundStack(label: "Привычки и события можно объединить по смыслу")
+    
+    private let notFoundStack = NotFoundStack(
+        label: "Привычки и события можно объединить по смыслу",
+        image: UIImage(named: "Star")
+    )
+
     private lazy var addButton: UIButton = {
         let button = RoundedButton(title: "Добавить категорию")
         button.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
@@ -100,7 +105,7 @@ final class CategoriesViewController: UIViewController {
 private extension CategoriesViewController {
     func setupContent() {
         title = "Категория"
-        view.backgroundColor = .white
+        view.backgroundColor = .yaWhite
         view.addSubview(categoriesTableView)
         view.addSubview(addButton)
         view.addSubview(notFoundStack)

@@ -17,10 +17,11 @@ final class TrackerCell: UICollectionViewCell {
     
     static let identifier = "TrackerCell"
     weak var delegate: TrackerCellDelegate?
+    private let analyticsService = AnalyticsService()
     private var tracker: Tracker?
     private var days = 0 {
         willSet {
-            daysCountLabel.text = "\(newValue.days())"
+            daysCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("numberOfDays", comment: "Число дней"), newValue)
         }
     }
     
@@ -41,6 +42,14 @@ final class TrackerCell: UICollectionViewCell {
         view.layer.cornerRadius = 12
         view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
         return view
+    }()
+    
+    private let pinImageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "pinSquare")
+        image.isHidden = false
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     private let emoji: UILabel = {
@@ -100,13 +109,19 @@ final class TrackerCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configure(with tracker: Tracker, days: Int, isCompleted: Bool) {
+    func configure(with tracker: Tracker,
+                   days: Int,
+                   isCompleted: Bool,
+                   interaction: UIInteraction
+    ) {
         self.tracker = tracker
         self.days = days
         cardView.backgroundColor = tracker.color
+        cardView.addInteraction(interaction)
         emoji.text = tracker.emoji
         trackerLabel.text = tracker.label
         completeButton.backgroundColor = tracker.color
+        pinImageView.isHidden = !tracker.isPinned
         toggleCompletedButton(to: isCompleted)
     }
     
@@ -132,6 +147,10 @@ final class TrackerCell: UICollectionViewCell {
     
     @objc
     private func didTapCompleteButton() {
+        analyticsService.report(event: "click", params: [
+            "screen": "Main",
+            "item": "track"
+        ])
         guard let tracker else { return }
         delegate?.didTapCompleteButton(of: self, with: tracker)
     }
@@ -142,9 +161,10 @@ final class TrackerCell: UICollectionViewCell {
 extension TrackerCell {
     func setupContent() {
         contentView.addSubview(cardView)
-        contentView.addSubview(iconView)
-        contentView.addSubview(emoji)
-        contentView.addSubview(trackerLabel)
+        cardView.addSubview(iconView)
+        cardView.addSubview(pinImageView)
+        cardView.addSubview(emoji)
+        cardView.addSubview(trackerLabel)
         contentView.addSubview(daysCountLabel)
         contentView.addSubview(completeButton)
     }
@@ -161,6 +181,11 @@ extension TrackerCell {
             iconView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 12),
             iconView.widthAnchor.constraint(equalToConstant: 24),
             iconView.heightAnchor.constraint(equalTo: iconView.widthAnchor),
+            // pinImageView
+            pinImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -12),
+            pinImageView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 18),
+            pinImageView.widthAnchor.constraint(equalToConstant: 8),
+            pinImageView.heightAnchor.constraint(equalToConstant: 12),
             // emoji
             emoji.centerXAnchor.constraint(equalTo: iconView.centerXAnchor),
             emoji.centerYAnchor.constraint(equalTo: iconView.centerYAnchor),

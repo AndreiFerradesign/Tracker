@@ -15,6 +15,7 @@ extension UIColor {
     static let background = UIColor(named: "Background")!
     static let yaRed = UIColor(named: "Red")!
     static let yaBlue = UIColor(named: "Blue")!
+    static let yaDatePickerColor = UIColor(named: "datePickerColor")!
     
     static let selection = [
         UIColor(named: "Color selection 1")!,
@@ -35,5 +36,11 @@ extension UIColor {
         UIColor(named: "Color selection 16")!,
         UIColor(named: "Color selection 17")!,
         UIColor(named: "Color selection 18")!,
+    ]
+    
+    static let gradient = [
+        UIColor(named: "GradientBlue")!,
+        UIColor(named: "GradientGreen")!,
+        UIColor(named: "GradientRed")!,
     ]
 }
