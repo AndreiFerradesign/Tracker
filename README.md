@@ -1,9 +1,10 @@
-# Tracker
+# Tracker App
 ThirdApp in Yandex.Practicum iOS Developer
 
-![AuthorizationScreen](https://github.com/AndreiFerradesign/TestAPPforAston/blob/main/MovieListApp_1.png)
-![MainScreen](https://github.com/AndreiFerradesign/TestAPPforAston/blob/main/MovieListApp_2.png)
-![DescriptionScreen](https://github.com/AndreiFerradesign/TestAPPforAston/blob/main/MovieListApp_3.png)
+![TreckersScreenDay](https://github.com/AndreiFerradesign/Tracker/blob/main/Tracker_1.jpeg)
+![TreckersScreenDark](https://github.com/AndreiFerradesign/Tracker/blob/main/Tracker_4.jpeg)
+![StatisticsScreen](https://github.com/AndreiFerradesign/Tracker/blob/main/Tracker_2.jpeg)
+![CreateHabitScreen](https://github.com/AndreiFerradesign/Tracker/blob/main/Tracker_3.jpeg)
 
 ## Description
 
